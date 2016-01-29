@@ -1,0 +1,148 @@
+<a class="logo">
+  <span class="logo-mini"><b>A</b>LT</span>
+  <span class="logo-lg"><b>Admin</b>LTE</span>
+</a>
+<nav class="navbar navbar-static-top" role="navigation">
+  <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+    <span class="sr-only">Toggle navigation</span>
+  </a>
+  <div class="navbar-custom-menu">
+    <ul class="nav navbar-nav">
+      <li class="dropdown notifications-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="fa fa-bell-o"></i>
+          <span class="label label-warning">{{notifications.length}}</span>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="header">You have {{notifications.length}} notifications</li>
+          <li>
+            <ul class="menu">
+
+              <li ng-repeat="item in notifications">
+                <a href="#">
+                  <i class="{{item.class}}"></i> {{item.name}}
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          <li class="footer"><a href="#">View all</a></li>
+        </ul>
+      </li>
+      <li class="dropdown tasks-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="fa fa-flag-o"></i>
+          <span class="label label-danger">{{tasks.length}}</span>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="header">You have {{tasks.length}} tasks</li>
+          <li>
+            <ul class="menu">
+              <li ng-repeat="item in tasks">
+                <a href="#">
+                  <h3>
+                    {{item.name}}
+                    <small class="pull-right">{{item.progress}}</small>
+                  </h3>
+                  <div class="progress xs">
+                    <div class="{{item.class}}" style="width: {{item.progress}}" role="progressbar" aria-valuenow="{{item.progress}}" aria-valuemin="0" aria-valuemax="100">
+                      <span class="sr-only">{{item.progress}}% Complete</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="footer">
+            <a href="#">View all tasks</a>
+          </li>
+        </ul>
+      </li>
+      <li class="dropdown messages-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="fa fa-envelope-o"></i>
+          <span class="label label-success">{{messages.length}}</span>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="header">You have {{messages.length}} messages</li>
+          <li>
+            <ul class="menu">
+              <li ng-repeat="item in messages">
+                <a href="#">
+                  <div class="pull-left">
+                    <img src="{{item.image}}" class="{{item.class}}" alt="User Image">
+                  </div>
+                  <h4>
+                    {{item.name}}
+                    <small><i class="fa fa-clock-o"></i> {{item.time}}</small>
+                  </h4>
+                  <p>{{item.message}}</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="footer"><a href="#">See All Messages</a></li>
+        </ul>
+      </li>
+      <li class="dropdown user user-menu" ng-hide="authentication.user">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <img src="/lib/AdminLTE/dist/img/avatar.png" class="user-image" alt="Not Authenticated">
+          <span class="hidden-xs">Not Authenticated</span>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="user-footer">
+            <div class="pull-right">
+              <a ui-sref="authentication.signup" class="btn btn-default btn-flat">Sign Up</a>
+            </div>
+            <div class="pull-left">
+              <a ui-sref="authentication.signin" class="btn btn-default btn-flat">Sign In</a>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li class="dropdown user user-menu" ng-show="authentication.user">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <img src="{{authentication.user.profileImageURL}}" class="user-image" alt="{{authentication.user.displayName}}">
+          <span class="hidden-xs">{{authentication.user.displayName}}</span>
+        </a>
+        <ul class="dropdown-menu">
+          <!-- User image -->
+          <li class="user-header">
+            <img src="{{authentication.user.profileImageURL}}" class="img-circle" alt="{{authentication.user.displayName}}">
+            <p>
+              {{authentication.user.displayName}}
+              <small>Member since Nov. 2012</small>
+            </p>
+          </li>
+          <!-- Menu Body -->
+          <li class="user-body">
+            <div class="row">
+              <div class="col-xs-4 text-center">
+                <a href="#">Followers</a>
+              </div>
+              <div class="col-xs-4 text-center">
+                <a href="#">Sales</a>
+              </div>
+              <div class="col-xs-4 text-center">
+                <a href="#">Friends</a>
+              </div>
+            </div>
+            <!-- /.row -->
+          </li>
+          <!-- Menu Footer-->
+          <li class="user-footer">
+            <div class="pull-left">
+              <a ui-sref="settings.profile" class="btn btn-default btn-flat">Profile</a>
+            </div>
+            <div class="pull-right">
+              <a href="/api/auth/signout" target="_self" class="btn btn-default btn-flat">Sign out</a>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" data-toggle="control-sidebar" control-sidebar><i class="fa fa-gears"></i></a>
+      </li>
+    </ul>
+  </div>
+</nav>
